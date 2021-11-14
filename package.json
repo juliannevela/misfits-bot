@@ -1,31 +1,31 @@
 {
-  "name": "misfits-bot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --verbose --runInBand --testLocationInResults",
-    "test:watch": "npm run test -- --watch",
-    "start": "node index.js",
-    "start:watch": "nodemon index.js"
-  },
-  "jest": {
-    "testEnvironment": "node"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/eslint-parser": "^7.15.7",
-    "@babel/plugin-syntax-class-properties": "^7.12.13",
-    "@types/jest": "^27.0.2",
-    "eslint": "^7.32.0",
-    "jest": "^27.2.2",
-    "nodemon": "^2.0.13",
-    "prettier": "^2.4.1"
-  },
-  "dependencies": {
-    "cross-env": "^7.0.3"
-  }
+    "name": "misfits-bot",
+    "version": "0.0.1",
+    "description": "A simple Discord bot to play music. Built using Discord.js and Node.js.",
+    "main": "src/index.js",
+    "type": "commonjs",
+    "scripts": {
+        "start": "node index.js",
+        "start:watch": "nodemon index.js"
+    },
+    "keywords": [],
+    "author": "Julianne Vela",
+    "license": "MIT",
+    "devDependencies": {
+        "eslint": "^8.2.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^8.3.0",
+        "nodemon": "^2.0.13"
+    },
+    "dependencies": {
+        "@discordjs/builders": "^0.8.2",
+        "@discordjs/opus": "^0.7.0",
+        "@discordjs/rest": "^0.1.0-canary.0",
+        "discord-api-types": "^0.24.0",
+        "discord.js": "^13.3.1",
+        "ffmpeg": "^0.0.4",
+        "fluent-ffmpeg": "^2.1.2",
+        "prettier": "^2.4.1",
+        "ytdl-core": "^4.9.1"
+    }
 }
