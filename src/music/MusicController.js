@@ -8,9 +8,9 @@ const {
 } = require('@discordjs/voice');
 
 const connection = joinVoiceChannel({
-    channelId: voiceChannel.id,
-    guildId: guild.id,
-    adapterCreator: guild.voiceAdapterCreator,
+    // channelId: voiceChannel.id,
+    // guildId: guild.id,
+    // adapterCreator: guild.voiceAdapterCreator,
 });
 
 const stream = ytdl('url', { filter: 'audioonly' });

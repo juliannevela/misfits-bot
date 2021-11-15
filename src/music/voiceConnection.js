@@ -1,9 +1,9 @@
 const { joinVoiceChannel } = require('@discordjs/voice');
 
-module.exports = (guild, voiceChannel) => {
+module.exports = (channel) => {
     joinVoiceChannel({
-        channelId: voiceChannel.id,
-        guildId: guild.id,
-        adapterCreator: guild.voiceAdapterCreator,
+        channelId: channel.id,
+        guildId: channel.guild.id,
+        adapterCreator: channel.guild.voiceAdapterCreator,
     });
 };
