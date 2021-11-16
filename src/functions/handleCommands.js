@@ -3,7 +3,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 
 module.exports = (client) => {
-    client.handleCommands = async (commandFolders, config, path) => {
+    client.handleCommands = async (commandFolders, path) => {
         client.commandArray = [];
         commandFolders.forEach((folder) => {
             const commandFiles = fs
@@ -16,7 +16,7 @@ module.exports = (client) => {
             });
         });
 
-        const rest = new REST({ version: '9' }).setToken(config.token);
+        const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
 
         (async () => {
             try {
@@ -24,8 +24,8 @@ module.exports = (client) => {
 
                 await rest.put(
                     Routes.applicationGuildCommands(
-                        config.clientId,
-                        config.guildId.test
+                        process.env.CLIENT_ID,
+                        process.env.GUILD_TEST
                     ),
                     {
                         body: client.commandArray,

@@ -1,7 +1,8 @@
-const { Client, Collection } = require('discord.js');
+require('dotenv').config();
+const { Client, Collection, Intents } = require('discord.js');
 const fs = require('fs');
-
-const config = require('./config/_config.json');
+const { Player } = require('discord-player');
+const { registerPlayerEvents } = require('./utils/player');
 
 const functions = fs
     .readdirSync('./src/functions')
@@ -10,16 +11,41 @@ const eventFiles = fs.readdirSync('./src/events');
 const commandFolders = fs.readdirSync('./src/commands');
 
 const client = new Client({
-    intents: 641,
+    intents: [
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MEMBERS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_VOICE_STATES,
+    ],
 });
 
-client.commands = new Collection();
+const defaultPlayerOptions = {
+    leaveOnEmpty: false,
+    leaveOnEnd: false,
+    leaveOnStop: false,
+    initialVolume: 0.5,
+    bufferingTimeout: 5000,
+    ytdlOptions: {
+        highWaterMark: 1 << 25,
+        quality: 'highestaudio',
+    },
+};
 
+client.commands = new Collection();
+client.player = new Player(client, defaultPlayerOptions);
+registerPlayerEvents(client.player);
+
+console.log('====================================');
+console.log('|  Misfits Bot is starting up...  |');
+console.log('====================================');
+console.log('Player Options: ', client.player.options);
+console.log('====================================');
 (async () => {
     functions.forEach((file) => {
         require(`./functions/${file}`)(client);
     });
-    client.handleEvents(eventFiles, config, './src/events');
-    client.handleCommands(commandFolders, config, './src/commands');
-    client.login(config.token);
+    client.handleEvents(eventFiles, './src/events');
+    client.handleCommands(commandFolders, './src/commands');
+    client.login(process.env.TOKEN);
 })();

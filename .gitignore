@@ -1,5 +1,5 @@
 node_modules
-_config.json
+.env
 package-lock.json
 .eslintrc.json
 .prettierrc.json
