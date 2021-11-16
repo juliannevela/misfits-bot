@@ -1,6 +1,8 @@
+/* eslint-disable indent */
 require('dotenv').config();
 const { Client, Collection, Intents } = require('discord.js');
 const fs = require('fs');
+require('colors');
 const { Player } = require('discord-player');
 const { registerPlayerEvents } = require('./utils/player');
 
@@ -36,16 +38,25 @@ client.commands = new Collection();
 client.player = new Player(client, defaultPlayerOptions);
 registerPlayerEvents(client.player);
 
-console.log('====================================');
-console.log('|  Misfits Bot is starting up...  |');
-console.log('====================================');
-console.log('Player Options: ', client.player.options);
-console.log('====================================');
 (async () => {
     functions.forEach((file) => {
         require(`./functions/${file}`)(client);
     });
+    console.log(
+        `
+         ▂╱▔▔╲╱▔▔▔▔╲╱▔▔╲▂
+         ╲┈▔╲┊╭╮┈┈╭╮┊╱▔┈╱
+         ┊▔╲╱▏┈╱▔▔╲┈▕╲╱▔┊
+         ┊┊┊┃┈┈▏┃┃▕┈┈┃┊┊┊
+         ┊┊┊▏╲┈╲▂▂╱┈╱▕┊┊┊
+█▄░█ █▀▀ █▀ █▀ █  █▀▀ █▀█ █▀▄ █▀▀ █▀
+█░▀█ ██▄ ▄█ ▄█ █  █▄▄ █▄█ █▄▀ ██▄ ▄█
+    `.rainbow
+    );
     client.handleEvents(eventFiles, './src/events');
     client.handleCommands(commandFolders, './src/commands');
+    // Uncomment if you want to use the see the current player options.
+    // console.log('Player Options: ', client.player.options);
+    // console.log('====================================');
     client.login(process.env.TOKEN);
 })();
