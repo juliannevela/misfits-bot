@@ -17,10 +17,6 @@ module.exports = (client) => {
         });
 
         const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
-
-        console.log('====================================');
-        console.log('[INFO] ');
-        console.log('====================================');
         const { CLIENT_ID } = process.env;
         (async () => {
             try {
