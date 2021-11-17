@@ -5,8 +5,8 @@
     "main": "src/index.js",
     "type": "commonjs",
     "scripts": {
-        "start": "node index.js",
-        "start:watch": "nodemon index.js"
+        "start": "node src/index.js",
+        "start:watch": "nodemon src/index.js"
     },
     "keywords": [],
     "author": "Julianne Vela",
@@ -22,13 +22,19 @@
         "@discordjs/opus": "^0.7.0",
         "@discordjs/rest": "^0.1.0-canary.0",
         "@discordjs/voice": "^0.7.5",
+        "colors": "^1.4.0",
         "discord-api-types": "^0.24.0",
+        "discord-player": "^5.1.0",
         "discord.js": "^13.3.1",
+        "dotenv": "^10.0.0",
         "ffmpeg": "^0.0.4",
-        "fluent-ffmpeg": "^2.1.2",
-        "fs": "^0.0.1-security",
+        "ffmpeg-static": "^4.4.0",
+        "figlet": "^1.5.2",
+        "figlet-cli": "^0.1.1",
+        "node-fetch": "^2.6.6",
         "prettier": "^2.4.1",
         "sodium": "^3.0.2",
+        "yargs": "^17.2.1",
         "ytdl-core": "^4.9.1"
     }
 }
