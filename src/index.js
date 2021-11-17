@@ -49,14 +49,14 @@ const nessiSign = `
 █░▀█ ██▄ ▄█ ▄█ █  █▄▄ █▄█ █▄▀ ██▄ ▄█`;
 
 (async () => {
+    console.log(nessiSign.rainbow);
+
+    // Setup functions to handle events and commands
     functions.forEach((file) => {
         require(`./functions/${file}`)(client);
     });
-    console.log(nessiSign.rainbow);
     client.handleEvents(eventFiles, './src/events');
     client.handleCommands(commandFolders, './src/commands');
-    // Uncomment if you want to use the see the current player options.
-    // console.log('Player Options: ', client.player.options);
-    // console.log('====================================');
+
     client.login(process.env.TOKEN);
 })();
