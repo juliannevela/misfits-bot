@@ -18,7 +18,7 @@ module.exports = (client) => {
 
         const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
 
-        const CLIENT_ID = client.user.id;
+        const CLIENT_ID = '891862922991665223';
         const {
             GUILD_TEST,
             // GUILD_PROD

@@ -55,8 +55,19 @@ const nessiSign = `
     functions.forEach((file) => {
         require(`./functions/${file}`)(client);
     });
-    client.handleEvents(eventFiles, './src/events');
-    client.handleCommands(commandFolders, './src/commands');
+    await client.handleCommands(commandFolders, './src/commands');
+    await client.handleEvents(eventFiles, './src/events');
 
-    client.login(process.env.TOKEN);
+    const token = process.env.TOKEN;
+    client.login(token).then(() => {
+        client.user.setPresence({
+            activities: [
+                {
+                    name: 'for requests',
+                    type: 'WATCHING',
+                },
+            ],
+            status: 'online',
+        });
+    });
 })();
