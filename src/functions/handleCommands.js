@@ -25,7 +25,7 @@ module.exports = (client) => {
                 await rest.put(
                     Routes.applicationGuildCommands(
                         process.env.CLIENT_ID,
-                        process.env.GUILD_TEST
+                        process.env.GUILD_PROD
                     ),
                     {
                         body: client.commandArray,

@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 /* eslint-disable indent */
 require('dotenv').config();
 const { Client, Collection, Intents } = require('discord.js');
@@ -38,21 +39,20 @@ client.commands = new Collection();
 client.player = new Player(client, defaultPlayerOptions);
 registerPlayerEvents(client.player);
 
-(async () => {
-    functions.forEach((file) => {
-        require(`./functions/${file}`)(client);
-    });
-    console.log(
-        `
+const nessiSign = `
          ▂╱▔▔╲╱▔▔▔▔╲╱▔▔╲▂
          ╲┈▔╲┊╭╮┈┈╭╮┊╱▔┈╱
          ┊▔╲╱▏┈╱▔▔╲┈▕╲╱▔┊
          ┊┊┊┃┈┈▏┃┃▕┈┈┃┊┊┊
          ┊┊┊▏╲┈╲▂▂╱┈╱▕┊┊┊
 █▄░█ █▀▀ █▀ █▀ █  █▀▀ █▀█ █▀▄ █▀▀ █▀
-█░▀█ ██▄ ▄█ ▄█ █  █▄▄ █▄█ █▄▀ ██▄ ▄█
-    `.rainbow
-    );
+█░▀█ ██▄ ▄█ ▄█ █  █▄▄ █▄█ █▄▀ ██▄ ▄█`;
+
+(async () => {
+    functions.forEach((file) => {
+        require(`./functions/${file}`)(client);
+    });
+    console.log(nessiSign.rainbow);
     client.handleEvents(eventFiles, './src/events');
     client.handleCommands(commandFolders, './src/commands');
     // Uncomment if you want to use the see the current player options.
