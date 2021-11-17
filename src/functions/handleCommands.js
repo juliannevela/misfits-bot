@@ -19,17 +19,17 @@ module.exports = (client) => {
         const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
 
         const CLIENT_ID = '891862922991665223';
-        const {
-            GUILD_TEST,
-            // GUILD_PROD
-        } = process.env;
+        const { TEST, TBT, TWM } = process.env;
 
         (async () => {
             try {
                 console.log('Started refreshing application (/) commands.');
 
                 await rest.put(
-                    Routes.applicationGuildCommands(CLIENT_ID, GUILD_TEST),
+                    Routes.applicationGuildCommands(
+                        CLIENT_ID,
+                        TEST || TBT || TWM
+                    ),
                     {
                         body: client.commandArray,
                     }
