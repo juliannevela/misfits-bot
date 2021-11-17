@@ -23,6 +23,11 @@ const client = new Client({
     ],
 });
 
+// Debugging info
+// client.on('debug', console.log);
+// client.on('warn', console.warn);
+// client.on('error', console.error);
+
 const defaultPlayerOptions = {
     leaveOnEmpty: false,
     leaveOnEnd: false,
