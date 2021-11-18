@@ -18,15 +18,35 @@ module.exports = {
             subcommand
                 .setName('server')
                 .setDescription('Get information about the server.')
-        ),
+        )
+		.addSubcommand((subcommand) => 
+			subcommand
+				.setName('commands')
+				.setDescription('Retrieves a list of the available commands.')
+		),
     async execute(interaction) {
-        if (interaction.subcommand === 'user') {
-            await interaction.reply(
+        switch(interaction.subcommand) {
+			case 'user':
+				await interaction.reply(
                 `${interaction.user.username}'s ID is ${interaction.user.id}`
-            );
-        }
-        await interaction.reply(
+            	);
+				break;
+			case 'server':
+				await interaction.reply(
             `Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`
-        );
+        		);
+				break;
+			case 'commands':
+				await interaction.reply({
+					content: '',
+					ephemeral: true,
+				})
+			default: 
+				await interaction.reply({
+					content: '❌ | Please enter a valid subcommand!',
+					ephemeral: true,
+				})
+				break;
+		}
     },
 };
